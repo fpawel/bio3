@@ -3,22 +3,22 @@ package main
 import (
 	"fmt"
 
-	"github.com/fpawel/bio3/products"
-	sph "github.com/fpawel/bio3/comport"
 	"github.com/boltdb/bolt"
+	sph "github.com/fpawel/bio3/internal/comport"
+	"github.com/fpawel/bio3/internal/products"
 	"github.com/lxn/walk"
 
 	"log"
 	"os"
 	"path/filepath"
 
-	"github.com/fpawel/bio3/fetch"
+	"github.com/fpawel/bio3/internal/fetch"
 	"runtime"
 
 	"time"
 
-	"github.com/fpawel/bio3/productsview"
 	"encoding/json"
+	"github.com/fpawel/bio3/internal/productsview"
 	"io/ioutil"
 )
 

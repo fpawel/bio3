@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
-	"github.com/fpawel/bio3/device/stend"
-	"strings"
 	"github.com/daviddengcn/go-colortext"
+	"github.com/fpawel/bio3/internal/device/stend"
+	"strings"
 )
 
 //consoleInputCmd определяет команду консольного ввода с параметрами

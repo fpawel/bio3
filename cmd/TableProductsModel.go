@@ -1,11 +1,11 @@
 package main
 
 import (
-	"github.com/lxn/walk"
-	"github.com/fpawel/bio3/products"
 	"fmt"
-	"github.com/fpawel/bio3/device/data"
-	"github.com/fpawel/bio3/walkutils"
+	"github.com/fpawel/bio3/internal/device/data"
+	"github.com/fpawel/bio3/internal/products"
+	"github.com/fpawel/bio3/internal/walkutils"
+	"github.com/lxn/walk"
 	"github.com/lxn/win"
 )
 

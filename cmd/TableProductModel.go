@@ -1,11 +1,9 @@
 package main
 
 import (
+	"github.com/fpawel/bio3/internal/device/data"
+	"github.com/fpawel/bio3/internal/products"
 	"github.com/lxn/walk"
-	"github.com/fpawel/bio3/products"
-	"github.com/fpawel/bio3/device/data"
-
-
 )
 
 type TableProductModel struct {

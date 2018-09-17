@@ -1,11 +1,10 @@
 package main
 
 import (
+	"github.com/fpawel/bio3/internal/products"
 	"github.com/lxn/walk"
-	. "github.com/lxn/walk/declarative"
 	"log"
 	"strconv"
-	"github.com/fpawel/bio3/products"
 )
 
 func (x *AppMainWindow) runEditPartyDialog() {

@@ -1,10 +1,8 @@
 package main
 
 import (
+	"github.com/fpawel/bio3/internal/fetch"
 	"github.com/lxn/walk"
-	. "github.com/lxn/walk/declarative"
-
-	"github.com/fpawel/bio3/fetch"
 	"time"
 )
 

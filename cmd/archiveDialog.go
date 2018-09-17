@@ -1,12 +1,11 @@
 package main
 
 import (
-	"github.com/fpawel/bio3/productsview"
+	"github.com/fpawel/bio3/internal/device/data"
+	"github.com/fpawel/bio3/internal/products"
+	"github.com/fpawel/bio3/internal/productsview"
+	"github.com/fpawel/bio3/internal/walkutils"
 	"github.com/lxn/walk"
-	. "github.com/lxn/walk/declarative"
-	"github.com/fpawel/bio3/device/data"
-	"github.com/fpawel/bio3/products"
-	"github.com/fpawel/bio3/walkutils"
 	"github.com/lxn/win"
 	"log"
 )

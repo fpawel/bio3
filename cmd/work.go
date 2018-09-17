@@ -1,22 +1,21 @@
 package main
 
 import (
-	"github.com/fpawel/bio3/device/data"
-	prd "github.com/fpawel/bio3/products"
-	sph "github.com/fpawel/bio3/comport"
+	sph "github.com/fpawel/bio3/internal/comport"
+	"github.com/fpawel/bio3/internal/device/data"
+	prd "github.com/fpawel/bio3/internal/products"
 	"github.com/lxn/walk"
 	"github.com/tarm/serial"
 
-	"github.com/fpawel/bio3/walkutils"
+	"github.com/fpawel/bio3/internal/walkutils"
 
 	"fmt"
 	"github.com/lxn/win"
 	"log"
 	"time"
 
-	"github.com/fpawel/bio3/fetch"
-	"github.com/fpawel/bio3/utils"
-
+	"github.com/fpawel/bio3/internal/fetch"
+	"github.com/fpawel/bio3/internal/utils"
 )
 
 type ReleStateValue struct {

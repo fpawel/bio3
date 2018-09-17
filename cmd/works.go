@@ -1,16 +1,16 @@
 package main
 
 import (
-	"github.com/fpawel/bio3/device/data"
-	"time"
-	"github.com/fpawel/bio3/fetch"
-	prd "github.com/fpawel/bio3/products"
-	stnd "github.com/fpawel/bio3/device/stend"
 	"fmt"
+	"github.com/fpawel/bio3/internal/device/data"
+	stnd "github.com/fpawel/bio3/internal/device/stend"
+	"github.com/fpawel/bio3/internal/fetch"
+	prd "github.com/fpawel/bio3/internal/products"
 	"github.com/lxn/walk"
 	"github.com/lxn/win"
+	"time"
 
-	"github.com/fpawel/bio3/walkutils"
+	"github.com/fpawel/bio3/internal/walkutils"
 )
 
 

@@ -1,14 +1,14 @@
 package main
 
 import (
+	"bytes"
 	"github.com/lxn/walk"
 	"image"
 	"log"
-	"bytes"
 
+	"github.com/fpawel/bio3/internal/productsview"
 	//_ "github.com/dkua/go-ico"
 	_ "image/png"
-	"github.com/fpawel/bio3/productsview"
 )
 
 var ImgReleOnPng16 = AssetImage("assets/png16/rele_on.png")

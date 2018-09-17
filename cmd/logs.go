@@ -1,12 +1,12 @@
 package main
 
 import (
-	"github.com/fpawel/bio3/products"
-	"os"
-	"github.com/lxn/win"
-	"github.com/daviddengcn/go-colortext"
 	"fmt"
-	"github.com/fpawel/bio3/device/data"
+	"github.com/daviddengcn/go-colortext"
+	"github.com/fpawel/bio3/internal/device/data"
+	"github.com/fpawel/bio3/internal/products"
+	"github.com/lxn/win"
+	"os"
 )
 
 type SerialPortLogger struct {

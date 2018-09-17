@@ -4,13 +4,13 @@ import (
 	"github.com/lxn/walk"
 	//. "github.com/lxn/walk/declarative"
 	"fmt"
-	"github.com/fpawel/bio3/device/data"
-	"github.com/fpawel/bio3/comport"
-	"github.com/fpawel/bio3/walkutils"
+	"github.com/fpawel/bio3/internal/comport"
+	"github.com/fpawel/bio3/internal/device/data"
+	"github.com/fpawel/bio3/internal/products"
+	"github.com/fpawel/bio3/internal/walkutils"
+	"github.com/fpawel/bio3/internal/walkutils/delay"
 	"log"
 	"time"
-	"github.com/fpawel/bio3/products"
-	"github.com/fpawel/bio3/walkutils/delay"
 )
 
 type AppMainWindow struct {

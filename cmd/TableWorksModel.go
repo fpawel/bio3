@@ -4,9 +4,9 @@ import (
 	"github.com/lxn/walk"
 	"github.com/lxn/win"
 
+	"github.com/fpawel/bio3/internal/device/data"
+	"github.com/fpawel/bio3/internal/products"
 	"log"
-	"github.com/fpawel/bio3/products"
-	"github.com/fpawel/bio3/device/data"
 )
 
 
