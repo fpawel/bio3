@@ -1,58 +1,43 @@
 package main
 
 import (
-	"bytes"
-	"github.com/lxn/walk"
-	"image"
-	"log"
-
 	"github.com/fpawel/bio3/internal/productsview"
+	"github.com/lxn/walk"
 	//_ "github.com/dkua/go-ico"
 	_ "image/png"
 )
 
-var ImgReleOnPng16 = AssetImage("assets/png16/rele_on.png")
-var ImgReleOffPng16 = AssetImage("assets/png16/rele_off.png")
+var ImgReleOnPng16 = mustImg("assets/png16/rele_on.png")
+var ImgReleOffPng16 = mustImg("assets/png16/rele_off.png")
 
-var ImgReleOnError = AssetImage("assets/png16/on_error.png")
-var ImgReleOffError = AssetImage("assets/png16/off_error.png")
-
-
-
-var ImgCheckmarkPng16 = AssetImage("assets/png16/checkmark.png")
-var ImgCloudPng16 = AssetImage("assets/png16/cloud.png")
-var ImgErrorPng16 = AssetImage("assets/png16/error.png")
-var ImgQuestionPng16 = AssetImage("assets/png16/question.png")
-var ImgForwardPng16 = AssetImage("assets/png16/forward.png")
+var ImgReleOnError = mustImg("assets/png16/on_error.png")
+var ImgReleOffError = mustImg("assets/png16/off_error.png")
 
 
-func AssetImage(path string)  walk.Image {
 
-	b, err := Asset(path)
+var ImgCheckmarkPng16 = mustImg("assets/png16/checkmark.png")
+var ImgCloudPng16 = mustImg("assets/png16/cloud.png")
+var ImgErrorPng16 = mustImg("assets/png16/error.png")
+var ImgQuestionPng16 = mustImg("assets/png16/question.png")
+var ImgForwardPng16 = mustImg("assets/png16/forward.png")
+
+
+func mustImg(path string)  walk.Image {
+	img,err := walk.NewImageFromFile(path)
 	if err != nil {
-		log.Fatalln(err, path)
+		panic(err)
 	}
-
-	x, s, err := image.Decode(bytes.NewReader(b))
-	if err != nil {
-		log.Fatalln(err, s, path)
-	}
-	r, err := walk.NewBitmapFromImage(x)
-	if err != nil {
-		log.Fatalln(err, s, path)
-	}
-	return r
-
+	return img
 }
 
 func init(){
 
-	productsview.ImgCalendarYearPng16 = AssetImage("assets/png16/calendar-year.png")
-	productsview.ImgCalendarMonthPng16 = AssetImage("assets/png16/calendar-month.png")
-	productsview.ImgCalendarDayPng16 = AssetImage("assets/png16/calendar-day.png")
+	productsview.ImgCalendarYearPng16 = mustImg("assets/png16/calendar-year.png")
+	productsview.ImgCalendarMonthPng16 = mustImg("assets/png16/calendar-month.png")
+	productsview.ImgCalendarDayPng16 = mustImg("assets/png16/calendar-day.png")
 	productsview.ImgErrorPng16 = ImgErrorPng16
-	productsview.ImgPartyNodePng16 = AssetImage("assets/png16/folder2.png")
+	productsview.ImgPartyNodePng16 = mustImg("assets/png16/folder2.png")
 	productsview.ImgCheckmarkPng16 = ImgCheckmarkPng16
-	productsview.ImgProductNodePng16 = AssetImage("assets/png16/folder1.png")
-	productsview.ImgWindowIcon = NewIconFromResourceId(IconDBID)
+	productsview.ImgProductNodePng16 = mustImg("assets/png16/folder1.png")
+	productsview.ImgWindowIcon = mustImg("assets/rc/app.ico")
 }

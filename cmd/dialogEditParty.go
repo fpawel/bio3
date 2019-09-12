@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/fpawel/bio3/internal/products"
 	"github.com/lxn/walk"
+	. "github.com/lxn/walk/declarative"
 	"log"
 	"strconv"
 )
@@ -76,7 +77,7 @@ func (x *AppMainWindow) runEditPartyDialog() {
 	}
 
 	_, err := Dialog{
-		Icon:          NewIconFromResourceId(IconSettingsID),
+		Icon:          mustImg("rc/settings.ico"),
 		AssignTo:      &dlg,
 		Title:         "Серийные номера приборов",
 		DefaultButton: &acceptPB,

@@ -15,7 +15,6 @@ import (
 
 const FontPointSize = 10
 
-
 func NewMainwindow(x *AppMainWindow) MainWindow {
 	var mMewPartyItems [20]MenuItem
 	for i := 0; i < 20; i++ {
@@ -40,17 +39,17 @@ func NewMainwindow(x *AppMainWindow) MainWindow {
 			}
 	}
 
-	singleWork := func (visible bool, work *data.Work ) Action{
+	singleWork := func(visible bool, work *data.Work) Action {
 		return Action{
-			Text: work.What,
-			Visible:visible,
+			Text:    work.What,
+			Visible: visible,
 			OnTriggered: func() {
 				x.app.RunWorks(work.What, []*data.Work{work})
 			},
 		}
 	}
 
-	singleWorkAction := func (s string, visible bool, a func() error ) Action{
+	singleWorkAction := func(s string, visible bool, a func() error) Action {
 		return singleWork(visible, &data.Work{
 			What:  s,
 			Reles: data.RelesValues{},
@@ -58,68 +57,63 @@ func NewMainwindow(x *AppMainWindow) MainWindow {
 		})
 	}
 
-
-
 	tableLog := TableView{
-		AssignTo:&x.tblLogs,
-		AlternatingRowBGColor: walk.RGB(239, 239, 239),
-		CheckBoxes:            false,
-		ColumnsOrderable:      false,
-		MultiSelection:        true,
-		Font: Font{ PointSize: FontPointSize },
-		Model:     x.app.tableLogsModel,
-		MaxSize:Size{0,180},
-		MinSize:Size{0,180},
+		AssignTo:         &x.tblLogs,
+		CheckBoxes:       false,
+		ColumnsOrderable: false,
+		MultiSelection:   true,
+		Font:             Font{PointSize: FontPointSize},
+		Model:            x.app.tableLogsModel,
+		MaxSize:          Size{0, 180},
+		MinSize:          Size{0, 180},
 
-		Columns:[]TableViewColumn{
-			{Title : "Время", Width:100 },
-			{Title : "Проверка" , Width:400},
-			{Title : "Сообщение", Width:500},
+		Columns: []TableViewColumn{
+			{Title: "Время", Width: 100},
+			{Title: "Проверка", Width: 400},
+			{Title: "Сообщение", Width: 500},
 		},
 	}
 
 	tableParty := TableView{
-		AssignTo:              &x.tblParty,
-		AlternatingRowBGColor: walk.RGB(239, 239, 239),
-		CheckBoxes:            false,
-		ColumnsOrderable:      false,
-		MultiSelection:        true,
-		Font: Font{ PointSize: FontPointSize },
-		Model:     x.app.tableProductsModel,
+		AssignTo:         &x.tblParty,
+		CheckBoxes:       false,
+		ColumnsOrderable: false,
+		MultiSelection:   true,
+		Font:             Font{PointSize: FontPointSize},
+		Model:            x.app.tableProductsModel,
 		//StyleCell: tblProductsModel.StyleCell,
 
-		Columns:[]TableViewColumn{
-			{Title : "Номер"},
-			{Title : "Связь"},
+		Columns: []TableViewColumn{
+			{Title: "Номер"},
+			{Title: "Связь"},
 		},
 	}
 
 	tableWorks := TableView{
-		Model:x.app.tableWorksModel,
+		Model: x.app.tableWorksModel,
 		//StyleCell:x.tableWorksModel.StyleCell,
 		OnCurrentIndexChanged: x.TableWorksCurrentIndexChanged,
-		MaxSize:          Size{0, 170},
-		MinSize:          Size{0, 170},
-		AssignTo:         &x.tblWorks,
-		CheckBoxes:       true,
-		ColumnsOrderable: false,
-		MultiSelection:   false,
-		Font: Font{ PointSize: FontPointSize },
+		MaxSize:               Size{0, 170},
+		MinSize:               Size{0, 170},
+		AssignTo:              &x.tblWorks,
+		CheckBoxes:            true,
+		ColumnsOrderable:      false,
+		MultiSelection:        false,
+		Font:                  Font{PointSize: FontPointSize},
 		Columns: []TableViewColumn{
 			{Title: "Проверка", Width: 400},
 			{Title: "Статус", Width: 50},
 		},
 	}
 
-
 	return MainWindow{
 		Title:    x.app.Title(),
-		Icon:  NewIconFromResourceId(IconAppID),
+		Icon:     mustImg("assets/rc/app.ico"),
 		Name:     "AppMainWindow",
 		Size:     Size{800, 600},
 		Layout:   HBox{MarginsZero: true, SpacingZero: true},
 		AssignTo: &x.MainWindow,
-		Font: Font{ PointSize: FontPointSize },
+		Font:     Font{PointSize: FontPointSize},
 
 		MenuItems: []MenuItem{
 
@@ -149,7 +143,6 @@ func NewMainwindow(x *AppMainWindow) MainWindow {
 					tableLog,
 					x.delayControl.Markup(),
 				},
-
 			},
 
 			ScrollView{
@@ -160,9 +153,9 @@ func NewMainwindow(x *AppMainWindow) MainWindow {
 
 					SplitButton{
 						ImageAboveText: true,
-						Image:    AssetImage("assets/png16/right-arrow.png"),
-						Text:     "Выполнить",
-						AssignTo: &x.btnRunMenu,
+						Image:          mustImg("assets/png16/right-arrow.png"),
+						Text:           "Выполнить",
+						AssignTo:       &x.btnRunMenu,
 						MenuItems: []MenuItem{
 							Action{
 								Text: "Проверки",
@@ -172,14 +165,14 @@ func NewMainwindow(x *AppMainWindow) MainWindow {
 							},
 							Separator{},
 							singleWork(true, data.ManualSurvey),
-							singleWorkAction ("Показать места", true,  x.app.LedPlacesOn),
-							singleWorkAction ("Включить питание", true, x.app.PowerOn),
-							singleWorkAction ("Выключить питание", true, x.app.PowerOff),
+							singleWorkAction("Показать места", true, x.app.LedPlacesOn),
+							singleWorkAction("Включить питание", true, x.app.PowerOn),
+							singleWorkAction("Выключить питание", true, x.app.PowerOff),
 
 							Action{
-								Text:    "Ввод",
-								Visible: prod=="",
-								AssignTo:&x.userInput,
+								Text:     "Ввод",
+								Visible:  prod == "",
+								AssignTo: &x.userInput,
 								OnTriggered: func() {
 									x.app.RunWorks("Ввод", []*data.Work{
 										{
@@ -187,7 +180,6 @@ func NewMainwindow(x *AppMainWindow) MainWindow {
 											Reles: data.RelesValues{},
 											Work:  x.app.consoleInput,
 										},
-
 									})
 								},
 							},
@@ -196,10 +188,10 @@ func NewMainwindow(x *AppMainWindow) MainWindow {
 					},
 					PushButton{
 						ImageAboveText: true,
-						Image:          AssetImage("assets/png16/cancel.png"),
+						Image:          mustImg("assets/png16/cancel.png"),
 						Text:           "Прервать",
 						OnClicked: func() {
-							if  x.app.workHelper == nil {
+							if x.app.workHelper == nil {
 								log.Fatal("cancel work click: x.app.workHelper == nil")
 							}
 							x.delayControl.Cancel()
@@ -238,45 +230,43 @@ func NewMainwindow(x *AppMainWindow) MainWindow {
 					},
 
 					PushButton{
-						AssignTo:&x.btnTests,
+						AssignTo:       &x.btnTests,
 						ImageAboveText: true,
 						Text:           "Проверки",
-						Image:          AssetImage("assets/png16/if_script.png"),
+						Image:          mustImg("assets/png16/if_script.png"),
 						OnClicked: func() {
 							x.app.tableWorksModel.SetWorks(data.MainWorks)
 							x.setupProductsColumns()
 							x.btnTests.SetEnabled(false)
 						},
-						Enabled:false,
+						Enabled: false,
 					},
 
 					PushButton{
 						ImageAboveText: true,
 						Text:           "Настройки",
-						Image:          AssetImage("assets/png16/preference.png"),
-						OnClicked: x.RunSetsDialog,
+						Image:          mustImg("assets/png16/preference.png"),
+						OnClicked:      x.RunSetsDialog,
 					},
 
 					SplitButton{
 						ImageAboveText: true,
-						Text:"Новая партия",
-						Image:AssetImage("assets/png16/add.png"),
-						MenuItems: mMewPartyItems[:],
+						Text:           "Новая партия",
+						Image:          mustImg("assets/png16/add.png"),
+						MenuItems:      mMewPartyItems[:],
 					},
 
 					PushButton{
 						ImageAboveText: true,
 						Text:           "Архив",
-						Image:          AssetImage("assets/png16/db.png"),
-						OnClicked: x.app.ExecuteArchiveDialog,
+						Image:          mustImg("assets/png16/db.png"),
+						OnClicked:      x.app.ExecuteArchiveDialog,
 					},
 				},
 			},
-
 		},
 	}
 }
-
 
 func leftAlignedTitleLabel(text string) ScrollView {
 	return ScrollView{
@@ -290,5 +280,3 @@ func leftAlignedTitleLabel(text string) ScrollView {
 		},
 	}
 }
-
-

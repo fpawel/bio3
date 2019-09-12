@@ -1,5 +1,9 @@
 package delay
 
+import (
+	. "github.com/lxn/walk/declarative"
+)
+
 func (x *Control) Markup() Composite {
 	return Composite{
 		AssignTo: &x.Composite,

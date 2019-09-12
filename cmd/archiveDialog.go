@@ -6,6 +6,7 @@ import (
 	"github.com/fpawel/bio3/internal/productsview"
 	"github.com/fpawel/bio3/internal/walkutils"
 	"github.com/lxn/walk"
+	. "github.com/lxn/walk/declarative"
 	"github.com/lxn/win"
 	"log"
 )
@@ -86,7 +87,7 @@ func (x *ArchiveDialog) Markup() MainWindow {
 	const fontPointSize = 10
 
 	return MainWindow{
-		Icon:     NewIconFromResourceId(IconDBID),
+		Icon:     mustImg("rc/app.ico"),
 		AssignTo: &x.MainWindow,
 		Title: "Обзор партий",
 		Layout:   HBox{},
@@ -106,7 +107,6 @@ func (x *ArchiveDialog) Markup() MainWindow {
 
 			TableView{
 				AssignTo:              &x.tblLogs,
-				AlternatingRowBGColor: walk.RGB(239, 239, 239),
 				CheckBoxes:            false,
 				ColumnsOrderable:      false,
 				MultiSelection:        true,
@@ -122,7 +122,6 @@ func (x *ArchiveDialog) Markup() MainWindow {
 
 			TableView{
 				AssignTo:              &x.tblProduct,
-				AlternatingRowBGColor: walk.RGB(239, 239, 239),
 				CheckBoxes:            false,
 				ColumnsOrderable:      false,
 				MultiSelection:        true,

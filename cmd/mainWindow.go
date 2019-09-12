@@ -47,7 +47,7 @@ type NotifyMessageTime struct {
 func NewAppMainWindow (app *App)(*AppMainWindow) {
 	return &AppMainWindow{
 		app : app,
-		delayControl:delay.New(AssetImage("assets/png16/cancel16.png")),
+		delayControl:delay.New(mustImg("assets/png16/cancel16.png")),
 	}
 }
 
@@ -108,11 +108,11 @@ func (x *AppMainWindow) createNotifyIcon() {
 	//check(err)
 
 	var err error
-	x.notifyIcon, err = walk.NewNotifyIcon()
+	x.notifyIcon, err = walk.NewNotifyIcon(x.MainWindow)
 	check(err)
 
 	// Set the icon and a tool tip text.
-	check(x.notifyIcon.SetIcon(NewIconFromResourceId(IconAppID)))
+	check(x.notifyIcon.SetIcon(mustImg("assets/rc/app.ico")))
 	check(x.notifyIcon.SetToolTip(x.app.ProductName()))
 
 	// The notify icon is hidden initially, so we have to make it visible.

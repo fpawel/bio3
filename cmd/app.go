@@ -175,7 +175,7 @@ func (x *App) Close() {
 	x.SaveIni()
 	x.SaveConfig()
 	check( x.db.DB.Close() )
-	check(x.mw.notifyIcon.Dispose())
+	//check(x.mw.notifyIcon.Dispose())
 }
 
 

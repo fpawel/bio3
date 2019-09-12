@@ -2,6 +2,7 @@ package walkutils
 
 import (
 	"github.com/lxn/walk"
+	. "github.com/lxn/walk/declarative"
 )
 
 type ProgressDialog struct {

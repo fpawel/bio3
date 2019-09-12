@@ -17,7 +17,7 @@ func ShowNotifyMessage(n *walk.NotifyIcon, level int ) func(title, info string) 
 	case win.NIIF_ERROR:
 		return n.ShowError
 	case win.NIIF_USER:
-		return n.ShowCustom
+		return n.ShowInfo
 	default:
 		return n.ShowMessage
 	}

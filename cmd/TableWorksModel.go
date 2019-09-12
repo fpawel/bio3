@@ -100,7 +100,7 @@ func (x *TableWorksModel) StyleCell(c *walk.CellStyle) {
 		switch c.Col() {
 		case 1:
 			if x.currentWorkIndex == c.Row() {
-				c.Image =  AssetImage("assets/png16/forward.png")
+				c.Image =  mustImg("assets/png16/forward.png")
 				return
 			}
 			if r := tx.MostImportantLogRecord(x.works[c.Row()].PartyLogPath(tx).Path()); r != nil {

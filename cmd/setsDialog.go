@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/fpawel/bio3/internal/fetch"
 	"github.com/lxn/walk"
+	. "github.com/lxn/walk/declarative"
 	"time"
 )
 
@@ -15,7 +16,7 @@ func (x *AppMainWindow) RunSetsDialog() {
 	cfg := &x.app.config
 
 	check(Dialog{
-		Icon: NewIconFromResourceId(IconSettingsID),
+		Icon: mustImg("rc/settings.ico"),
 		AssignTo:      &dlg,
 		Title:         "Настройки",
 		DefaultButton: &acceptPB,
